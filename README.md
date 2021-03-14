@@ -1,5 +1,6 @@
 # Pay_The_Bills_9000 
 (Name subject to change soon)
+
 (Please open the file before reading as GitHub formatting is bad or idk how to use it yet)
 
 Android Car Payment/Maitanance Reminder App - By Mircea Dobre - 293117
@@ -22,8 +23,11 @@ Android Car Payment/Maitanance Reminder App - By Mircea Dobre - 293117
                             
  -Push notification(1 week before and and the last 3 days until is due if not set as done) 
                     when - service is due
+                    
                          - syn is due
+                         - 
                          - green tax is due
+                         - 
                          - insurance is due
  
  @Should have:
