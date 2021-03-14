@@ -1,7 +1,7 @@
 # Pay_The_Bills_9000 
 (Name subject to change soon)
 
-(Please open the file before reading as GitHub formatting is bad or idk how to use it yet)
+(Please read the file as ray as GitHub formatting is bad or idk how to use it yet)
 
 Android Car Payment/Maitanance Reminder App - By Mircea Dobre - 293117
  
