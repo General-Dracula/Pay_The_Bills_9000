@@ -1,6 +1,7 @@
 # Pay_The_Bills_9000 
 (Name subject to change soon)
- Android Car Payment/Maitanance Reminder App - By Mircea Dobre - 293117
+
+Android Car Payment/Maitanance Reminder App - By Mircea Dobre - 293117
  
  I want to create an Android app that reminds me to pay the bills for my car(green tax, insurance and so on), get a new syn and also remembers me to do car maitanance like changing oil, fiters at a given time/interval. The motivation behind this app is a friend who didn't get any messages or bills from skat to pay his green tax at time and lost his license plates as a result and a hefty fine besides not having a car for a while.
  
