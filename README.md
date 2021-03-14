@@ -22,12 +22,10 @@ Android Car Payment/Maitanance Reminder App - By Mircea Dobre - 293117
  -Own car information panel
                             
  -Push notification(1 week before and and the last 3 days until is due if not set as done) 
-                    when - service is due
-                    
-                         - syn is due
-                         - 
+                    when
+                         - service is due
+                         - syn is due 
                          - green tax is due
-                         - 
                          - insurance is due
  
  @Should have:
