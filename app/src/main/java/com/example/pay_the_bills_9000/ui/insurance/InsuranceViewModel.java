@@ -1,16 +1,16 @@
-package com.example.pay_the_bills_9000.ui.gallery;
+package com.example.pay_the_bills_9000.ui.insurance;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class InsuranceViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public InsuranceViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is an insurance fragment");
     }
 
     public LiveData<String> getText() {

@@ -1,16 +1,16 @@
-package com.example.pay_the_bills_9000.ui.home;
+package com.example.pay_the_bills_9000.ui.Syn;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class SynViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public SynViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is syn fragment");
     }
 
     public LiveData<String> getText() {

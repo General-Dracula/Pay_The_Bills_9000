@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.pay_the_bills_9000.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:name="com.example.pay_the_bills_9000.ui.insurance.InsuranceFragment"
+        android:label="@string/menu_insurance"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.pay_the_bills_9000.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:name="com.example.pay_the_bills_9000.ui.Syn.SynFragment"
+        android:label="@string/menu_syn"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.pay_the_bills_9000.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:name="com.example.pay_the_bills_9000.ui.green_tax.Green_TaxFragment"
+        android:label="@string/menu_green_tax"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

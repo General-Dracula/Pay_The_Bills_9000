@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_insurance">Insurance</string>
+    <string name="menu_syn">Syn</string>
+    <string name="menu_green_tax">Green Tax</string>
 </resources>
