@@ -22,8 +22,10 @@ public class Green_TaxFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         greenTaxViewModel =
                 new ViewModelProvider(this).get(Green_TaxViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        View root = inflater.inflate(R.layout.fragment_green_tax, container, false);
+
         final TextView textView = root.findViewById(R.id.text_slideshow);
+
         greenTaxViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

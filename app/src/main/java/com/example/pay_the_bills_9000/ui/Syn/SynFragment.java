@@ -22,7 +22,7 @@ public class SynFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         synViewModel =
                 new ViewModelProvider(this).get(SynViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        View root = inflater.inflate(R.layout.fragment_syn, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
         synViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
