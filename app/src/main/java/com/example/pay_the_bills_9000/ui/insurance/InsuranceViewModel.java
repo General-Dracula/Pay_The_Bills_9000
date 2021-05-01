@@ -20,22 +20,15 @@ public class InsuranceViewModel extends ViewModel {
     {
       this.insurancePolicies = new MutableLiveData<ArrayList<insurancePolicy>>();
       aux = new ArrayList<insurancePolicy>();
-        aux.add(new insurancePolicy("Gigel Frone SRL", "12.01.2020", "1234 DKK"));
-        aux.add(new insurancePolicy("Gigel  SRL", "12.01.2020", "32524 DKK"));
-        aux.add(new insurancePolicy("George Frone SRL", "12.01.2020", "34543 DKK"));
-        aux.add(new insurancePolicy("Frone SRL", "12.01.2020", "12453 DKK"));
+        aux.add(new insurancePolicy("Gigel Frone SRL", "12.01.2020 - 12.01.2021", "1234 DKK"));
+        aux.add(new insurancePolicy("Gigel  SRL", "12.01.2020 - 12.01.2021", "32524 DKK"));
+        aux.add(new insurancePolicy("George Frone SRL", "12.01.2020 - 12.01.2021", "34543 DKK"));
+        aux.add(new insurancePolicy("Frone SRL", "12.01.2020 - 12.01.2021", "12453 DKK"));
 
         insurancePolicies.setValue(aux);
+            for(int i = 0; i < 10; i++)
+                aux.add(0, new insurancePolicy(String.valueOf(i), "12.01.2020 - 12.01.2021", "666 DKK"));
 
-
-        try {
-            for(int i = 0; i < 10; i++) {
-                Thread.sleep(1000);
-                aux.add(0, new insurancePolicy(String.valueOf(i), "12.01.2020", "666 DKK"));
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
 
 
