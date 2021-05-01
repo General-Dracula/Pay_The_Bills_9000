@@ -14,37 +14,61 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.ListFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pay_the_bills_9000.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import model.insurancePolicy;
+
 public class InsuranceFragment extends Fragment {
 
     private InsuranceViewModel insuranceViewModel;
+
+    RecyclerView insPoliciesList;
+
+    InsuranceAdapter insuranceAdapter;
+
+
+    public static InsuranceFragment newInstance(){
+        return new InsuranceFragment();
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         insuranceViewModel =
                 new ViewModelProvider(this).get(InsuranceViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_insurance, container, false);
-        //final TextView textView = root.findViewById(R.id.text_home);
-        //insuranceViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            //@Override
-           // public void onChanged(@Nullable String s) {
-         //       textView.setText(s);
-         //   }
-       // }
 
+        View view = inflater.inflate(R.layout.fragment_insurance, container, false);
 
-        insuranceViewModel.getList().observe(getViewLifecycleOwner(), new Observer<ArrayList<String>>() {
-            @Override
-            public void onChanged(ArrayList<String> strings) {
-                //listView.removeAllViews();
-                //listView
-            }
-        });
-        return root;
+        insPoliciesList = view.findViewById(R.id.rv);
+        System.out.println("----------------" + insPoliciesList);
+        insPoliciesList.hasFixedSize();
+        //insPoliciesList.setLayoutManager(new LinearLayoutManager(this));
+
+        return view;
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        insuranceViewModel = new ViewModelProvider(this).get(InsuranceViewModel.class);
+        // TODO: Use the ViewModel
+        insuranceViewModel.getPolicies().observe(getViewLifecycleOwner(), policyObserver);
+    }
+
+
+    Observer<ArrayList<insurancePolicy>> policyObserver = new Observer<ArrayList<insurancePolicy>>()
+    {
+        @Override
+        public void onChanged(ArrayList<insurancePolicy> insurancePolicies)
+        {
+            InsuranceAdapter insuranceAdapter = new InsuranceAdapter(insurancePolicies);
+            insPoliciesList.setLayoutManager(new LinearLayoutManager(getContext()));
+            insPoliciesList.setAdapter(insuranceAdapter);
+        }
+    };
 }
