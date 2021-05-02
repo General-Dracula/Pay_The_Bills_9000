@@ -3,7 +3,6 @@ package com.example.pay_the_bills_9000;
 import android.os.Bundle;
 import android.view.Menu;
 
-import com.example.pay_the_bills_9000.ui.insurance.InsuranceAdapter;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -13,12 +12,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-
-import model.insurancePolicy;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,16 +26,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.insurance, R.id.syn, R.id.green_tax)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

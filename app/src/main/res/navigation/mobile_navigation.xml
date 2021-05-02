@@ -3,23 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/insurance">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/insurance"
         android:name="com.example.pay_the_bills_9000.ui.insurance.InsuranceFragment"
         android:label="@string/menu_insurance"
-        tools:layout="@layout/fragment_insurance" />
+        tools:layout="@layout/fragment_insurance" >
+        <action
+            android:id="@+id/addInsuranceAction"
+            app:destination="@id/addInsurancePolicyFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/syn"
         android:name="com.example.pay_the_bills_9000.ui.Syn.SynFragment"
         android:label="@string/menu_syn"
         tools:layout="@layout/fragment_syn" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/green_tax"
         android:name="com.example.pay_the_bills_9000.ui.green_tax.Green_TaxFragment"
         android:label="@string/menu_green_tax"
         tools:layout="@layout/fragment_green_tax" />
+    <fragment
+        android:id="@+id/addInsurancePolicyFragment"
+        android:name="com.example.pay_the_bills_9000.ui.insurance.AddInsurancePolicyFragment"
+        android:label="add_insurance_policy_fragment"
+        tools:layout="@layout/add_insurance_policy_fragment" />
 </navigation>

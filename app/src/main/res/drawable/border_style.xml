@@ -17,7 +17,5 @@ android:shape="rectangle">
         android:left="2dp"
         android:bottom="2dp"
         />
-
-
-
+    
 </shape>
