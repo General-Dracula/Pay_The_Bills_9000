@@ -2,8 +2,7 @@
     <string name="app_name">Pay_The_Bills_9000</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">CM 69 537</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">To be implemented</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -16,9 +15,14 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
     <string name="input_your_license_plate_number">INPUT YOUR LICENSE PLATE NUMBER</string>
     <string name="log_in">Log In</string>
+    <string name="invalid_licence_plate">Invalid licence plate</string>
+    <string name="insurerAddIns">Insurer</string>
+    <string name="select_start_date">Select start date</string>
+    <string name="start_date">Start Date</string>
+    <string name="stop_dat">Stop Date</string>
+    <string name="select_stop_date">Select stop date</string>
+    <string name="costInsurance">Cost</string>
+    <string name="add_policy">Add Policy</string>
 </resources>

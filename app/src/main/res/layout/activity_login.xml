@@ -76,7 +76,7 @@
         android:id="@+id/invalidLicenceText"
         android:layout_width="171dp"
         android:layout_height="22dp"
-        android:text="Invalid licence plate"
+        android:text="@string/invalid_licence_plate"
         android:textAlignment="center"
         android:textColor="#FF0000"
         android:textSize="18sp"

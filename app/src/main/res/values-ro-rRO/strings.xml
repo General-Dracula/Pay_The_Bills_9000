@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pay_The_Bills_9000</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">CM 69 537</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Setari</string>
+
+    <string name="menu_insurance">Asigurare</string>
+    <string name="menu_syn">ITP</string>
+    <string name="menu_green_tax">Hotie</string>
+    <string name="title_activity_login">Plateste Bai 9000</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Parola</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Logheaza-te</string>
+    <string name="welcome">"Welcome !"</string>
+
+    <string name="input_your_license_plate_number">BAGA NUMARUL DE INMATRICULARE</string>
+    <string name="log_in">Logheaza-te</string>
+    <string name="invalid_licence_plate">Numar gresit</string>
+</resources>
