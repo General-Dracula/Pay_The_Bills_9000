@@ -88,7 +88,7 @@ public class DataConnection
 
   public void createNewInsPolicy(String insurer, String startDate, String stopDate, String cost)
   {
-      insurancePolicies.getValue().add(new insurancePolicy(insurer, startDate + " - " + stopDate, cost));
+      insurancePolicies.getValue().add(0, new insurancePolicy(insurer, startDate + " - " + stopDate, cost));
   }
 
 

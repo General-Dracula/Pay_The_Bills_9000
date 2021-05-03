@@ -25,4 +25,5 @@
     <string name="select_stop_date">Select stop date</string>
     <string name="costInsurance">Cost</string>
     <string name="add_policy">Add Policy</string>
+    <string name="invalid_input">Invalid Input</string>
 </resources>
