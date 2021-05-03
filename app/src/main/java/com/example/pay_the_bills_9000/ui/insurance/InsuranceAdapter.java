@@ -1,5 +1,6 @@
 package com.example.pay_the_bills_9000.ui.insurance;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pay_the_bills_9000.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import model.insurancePolicy;
 
@@ -49,6 +55,20 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
         insuranceViewHolder.insurer.setText(insurancePolicies.get(position).getInsurer());
         insuranceViewHolder.period.setText(insurancePolicies.get(position).getPeriod());
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date c = Calendar.getInstance().getTime();
+        //System.out.println("Current time => " + c);
+
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+
+        try {
+            if(sdf.parse(formattedDate).before(sdf.parse(insurancePolicies.get(position).getPeriod().substring(12))))
+                insuranceViewHolder.itemView.setBackgroundColor(Color.parseColor("#00cc99"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public class InsuranceViewHolder extends RecyclerView.ViewHolder

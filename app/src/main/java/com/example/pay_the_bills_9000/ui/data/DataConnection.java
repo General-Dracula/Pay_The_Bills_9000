@@ -39,10 +39,10 @@ public class DataConnection
   private Car testingCar()
   {
       ArrayList<insurancePolicy> aux = new ArrayList<insurancePolicy>();
-      aux.add(new insurancePolicy("Gigel Frone SRL", "12.01.2020 - 12.01.2021", "1234 DKK"));
-      aux.add(new insurancePolicy("Gigel  SRL", "12.01.2020 - 12.01.2021", "32524 DKK"));
-      aux.add(new insurancePolicy("George Frone SRL", "12.01.2020 - 12.01.2021", "34543 DKK"));
-      aux.add(new insurancePolicy("Frone SRL", "12.01.2020 - 12.01.2021", "12453 DKK"));
+      aux.add(new insurancePolicy("Gigel Frone SRL", "12/01/2020 - 12/01/2021", "1234 DKK"));
+      aux.add(new insurancePolicy("Gigel  SRL", "12/01/2020 - 12/01/2021", "32524 DKK"));
+      aux.add(new insurancePolicy("George Frone SRL", "12/01/2020 - 12/01/2021", "34543 DKK"));
+      aux.add(new insurancePolicy("Frone SRL", "12/01/2020 - 12/01/2021", "12453 DKK"));
 
       ArrayList<Syn> auxSyn = new ArrayList<Syn>();
       auxSyn.add(new Syn("Gigel SRL", true, "12.12.2020", 2));
