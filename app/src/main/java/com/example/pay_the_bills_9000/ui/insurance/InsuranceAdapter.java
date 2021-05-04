@@ -65,7 +65,9 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
 
         try {
             if(sdf.parse(formattedDate).before(sdf.parse(insurancePolicies.get(position).getPeriod().substring(12))))
-                insuranceViewHolder.itemView.setBackgroundColor(Color.parseColor("#00cc99"));
+                insuranceViewHolder.valid.setAlpha(1.0f);
+            else insuranceViewHolder.valid.setAlpha(0.0f);
+            //insuranceViewHolder.itemView.setBackgroundColor(Color.parseColor("#00cc99"));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -76,6 +78,7 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
         TextView insurer;
         TextView period;
         TextView cost;
+        TextView valid;
 
         InsuranceViewHolder(View itemView)
         {
@@ -83,6 +86,7 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
             this.insurer = itemView.findViewById(R.id.insurerer);
             this.period = itemView.findViewById(R.id.period);
             this.cost = itemView.findViewById(R.id.ammount);
+            this.valid = itemView.findViewById(R.id.validText);
         }
     }
 }

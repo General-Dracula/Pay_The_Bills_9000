@@ -17,9 +17,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private TextView licenseText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +43,32 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        /*
+
+        licenseText = findViewById(R.id.menuLicencePlate);
+
+        DataConnection.getInstance().getLicencePlateLive().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                licenseText.setText(s);
+            }
+        });
+        */
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        licenseText = findViewById(R.id.menuLicencePlate);
+
+        DataConnection.getInstance().getLicencePlateLive().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                licenseText.setText(s);
+            }
+        });
         return true;
     }
 

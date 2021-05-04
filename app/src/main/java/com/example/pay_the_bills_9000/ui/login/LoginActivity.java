@@ -3,6 +3,7 @@ package com.example.pay_the_bills_9000.ui.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         TextView errorText = findViewById(R.id.invalidLicenceText);
         errorText.setAlpha(0.0f);
 
+        textView.setText(getLastPlate());
+
 
 
         Button button = findViewById(R.id.logInButton);
@@ -33,7 +36,10 @@ public class LoginActivity extends AppCompatActivity {
             {
                 if(isPlateValid(String.valueOf(textView.getText())))
                 {
-                    DataConnection.getInstance().login(String.valueOf(textView.getText()));
+                    String auxPlate = (String.valueOf(textView.getText()));
+                    auxPlate = auxPlate.toUpperCase();
+                    DataConnection.getInstance().login(String.valueOf(auxPlate));
+                    saveLastPlate(auxPlate);
                     goToMain();
                 }
                 else {
@@ -78,11 +84,25 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         if(Character.isLetter(plate.charAt(8)))
             return false;
-
-
-
         return true;
     }
+
+    private void saveLastPlate(String plate)
+    {
+        SharedPreferences prefs = getSharedPreferences("LastPlate", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("This_Is_An_Easter_Egg_Muie_PSD", plate);
+        editor.apply();
+    }
+
+    private String getLastPlate()
+    {
+        SharedPreferences prefs = getSharedPreferences("LastPlate", MODE_PRIVATE);
+        String plate = prefs.getString("This_Is_An_Easter_Egg_Muie_PSD", "");
+        return plate;
+    }
+
+
 
     private void goToMain()
     {

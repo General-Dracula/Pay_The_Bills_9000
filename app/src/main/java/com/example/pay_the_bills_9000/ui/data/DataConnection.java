@@ -16,7 +16,7 @@ public class DataConnection
 
   private MutableLiveData<ArrayList<insurancePolicy>> insurancePolicies;
 
-  private String licencePlate;
+  private MutableLiveData<String> licencePlate;
 
   private static DataConnection instance;
 
@@ -25,6 +25,8 @@ public class DataConnection
   private DataConnection()
   {
       carMutableLiveData = new MutableLiveData<Car>();
+
+      licencePlate = new MutableLiveData<String>();
 
       carMutableLiveData.setValue(this.testingCar());
 
@@ -42,13 +44,13 @@ public class DataConnection
       aux.add(new insurancePolicy("Gigel Frone SRL", "12/01/2020 - 12/01/2021", "1234 DKK"));
       aux.add(new insurancePolicy("Gigel  SRL", "12/01/2020 - 12/01/2021", "32524 DKK"));
       aux.add(new insurancePolicy("George Frone SRL", "12/01/2020 - 12/01/2021", "34543 DKK"));
-      aux.add(new insurancePolicy("Frone SRL", "12/01/2020 - 12/01/2021", "12453 DKK"));
+      aux.add(new insurancePolicy("Frone SRL", "12/01/2020 - 12/01/2022", "12453 DKK"));
 
       ArrayList<Syn> auxSyn = new ArrayList<Syn>();
       auxSyn.add(new Syn("Gigel SRL", true, "12.12.2020", 2));
       auxSyn.add(new Syn("Gigel SRL", true, "12.12.2020", 2));
       auxSyn.add(new Syn("Gigel SRL", true, "12.12.2020", 2));
-      auxSyn.add(new Syn("Gigel SRL", true, "12.12.2020", 2));
+      auxSyn.add(new Syn("Gigel SRL", true, "12.12.2021", 2));
       auxSyn.add(new Syn("Gigel SRL", true, "12.12.2020", 2));
 
       ArrayList<greenTax> auxTax = new ArrayList<greenTax>();
@@ -57,7 +59,7 @@ public class DataConnection
       auxTax.add(new greenTax("2432", "12.12.2000"));
       auxTax.add(new greenTax("2432", "12.12.2000"));
 
-      return new Car(licencePlate, aux, auxSyn, auxTax);
+      return new Car(licencePlate.getValue(), aux, auxSyn, auxTax);
   }
 
   public static DataConnection getInstance() {
@@ -73,10 +75,15 @@ public class DataConnection
 
   public void login(String licencePlate)
   {
-      this.licencePlate = licencePlate;
+      this.licencePlate.setValue(licencePlate);
   }
 
   public String getLicencePlate()
+  {
+      return this.licencePlate.getValue();
+  }
+
+  public LiveData<String> getLicencePlateLive()
   {
       return this.licencePlate;
   }
