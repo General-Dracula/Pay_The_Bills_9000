@@ -10,6 +10,7 @@ import com.example.pay_the_bills_9000.ui.data.DataConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Car;
 import model.insurancePolicy;
 
 public class InsuranceViewModel extends ViewModel {
@@ -23,9 +24,9 @@ public class InsuranceViewModel extends ViewModel {
 
     }
 
-    public LiveData<ArrayList<insurancePolicy>> getPolicies()
+    public LiveData<Car> getPolicies()
     {
-        return DataConnection.getInstance().getInsurancePolicies();
+        return DataConnection.getInstance().getCar();
     }
 
 

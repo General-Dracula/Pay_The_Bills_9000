@@ -11,6 +11,11 @@ public class greenTax
         this.date = date;
     }
 
+    public greenTax()
+    {
+
+    }
+
     public String getAmmount() {
         return ammount;
     }

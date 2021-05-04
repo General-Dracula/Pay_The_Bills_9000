@@ -24,6 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Car;
 import model.insurancePolicy;
 
 public class InsuranceFragment extends Fragment {
@@ -73,14 +74,14 @@ public class InsuranceFragment extends Fragment {
     }
 
 
-    Observer<ArrayList<insurancePolicy>> policyObserver = new Observer<ArrayList<insurancePolicy>>()
+    Observer<Car> policyObserver = new Observer<Car>()
     {
         @Override
-        public void onChanged(ArrayList<insurancePolicy> insurancePolicies)
-        {
-            InsuranceAdapter insuranceAdapter = new InsuranceAdapter(insurancePolicies);
+        public void onChanged(Car car) {
+            InsuranceAdapter insuranceAdapter = new InsuranceAdapter(car.getInsurancePolicies());
             insPoliciesList.setLayoutManager(new LinearLayoutManager(getContext()));
             insPoliciesList.setAdapter(insuranceAdapter);
         }
+
     };
 }

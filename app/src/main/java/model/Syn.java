@@ -14,6 +14,11 @@ public class Syn
         this.valability = valability;
     }
 
+    public Syn()
+    {
+
+    }
+
 
     public String getSynShop() {
         return synShop;

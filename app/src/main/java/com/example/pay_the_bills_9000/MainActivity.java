@@ -19,6 +19,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import org.w3c.dom.Text;
 
+import model.Car;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -63,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
         licenseText = findViewById(R.id.menuLicencePlate);
 
-        DataConnection.getInstance().getLicencePlateLive().observe(this, new Observer<String>() {
+        DataConnection.getInstance().getCar().observe(this, new Observer<Car>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                licenseText.setText(s);
+            public void onChanged(Car car) {
+                licenseText.setText(car.getLicencePlate());
             }
         });
         return true;

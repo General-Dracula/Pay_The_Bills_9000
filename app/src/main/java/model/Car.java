@@ -17,6 +17,13 @@ public class Car
         this.greenTaxes = greenTaxes;
     }
 
+    public Car()
+    {
+        insurancePolicies = new ArrayList<insurancePolicy>();
+        syns = new ArrayList<Syn>();
+        greenTaxes = new ArrayList<greenTax>();
+    }
+
     public String getLicencePlate() {
         return licencePlate;
     }

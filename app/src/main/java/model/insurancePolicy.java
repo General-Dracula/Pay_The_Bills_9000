@@ -17,6 +17,11 @@ public class insurancePolicy extends LiveData<ArrayList<insurancePolicy>> {
         this.period = period;
     }
 
+    public insurancePolicy()
+    {
+
+    }
+
     public String getAmount() {
         return amount;
     }
