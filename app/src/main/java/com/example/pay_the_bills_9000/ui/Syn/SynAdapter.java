@@ -104,8 +104,10 @@ public class SynAdapter extends RecyclerView.Adapter<SynAdapter.SynViewHolder>
                 }
                 else
                     {
-                    synViewHolder.valid.setAlpha(0.0f);
+                    synViewHolder.valid.setText("Expired");
                     synViewHolder.daysLeft.setAlpha(0.0f);
+                        synViewHolder.valid.setTextColor(Color.parseColor("#ffff00"));
+
                 }
 
             } catch (ParseException e) {

@@ -38,6 +38,6 @@
     <fragment
         android:id="@+id/addSynFragment"
         android:name="com.example.pay_the_bills_9000.ui.Syn.AddSynFragment"
-        android:label="add_syn_fragment"
+        android:label="@string/add_syn"
         tools:layout="@layout/add_syn_fragment" />
 </navigation>
