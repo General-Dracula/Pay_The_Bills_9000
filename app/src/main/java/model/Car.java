@@ -1,6 +1,12 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Locale;
 
 public class Car
 {
@@ -10,7 +16,8 @@ public class Car
     private ArrayList<Syn> syns;
     private ArrayList<greenTax> greenTaxes;
 
-    public Car(String licencePlate, ArrayList<insurancePolicy> insurancePolicies, ArrayList<Syn> syns, ArrayList<greenTax> greenTaxes) {
+    public Car(String licencePlate, ArrayList<insurancePolicy> insurancePolicies, ArrayList<Syn> syns, ArrayList<greenTax> greenTaxes)
+    {
         this.licencePlate = licencePlate;
         this.insurancePolicies = insurancePolicies;
         this.syns = syns;
@@ -23,6 +30,28 @@ public class Car
         syns = new ArrayList<Syn>();
         greenTaxes = new ArrayList<greenTax>();
     }
+
+    public void sortArrays()
+    {
+        sortSyns();
+    }
+
+    public void sortSyns()
+    {
+        for(int i = 0; i < this.syns.size(); i++)
+        {
+            for(int j = i + 1; j < this.syns.size(); j++)
+            {
+                if(this.syns.get(i).isBefore(this.syns.get(j).getDate()))
+                {
+                    Collections.swap(this.syns, i, j);
+                }
+            }
+        }
+
+    }
+
+
 
     public String getLicencePlate() {
         return licencePlate;

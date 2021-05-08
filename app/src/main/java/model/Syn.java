@@ -1,5 +1,8 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Syn
 {
     private String synShop;
@@ -51,4 +54,17 @@ public class Syn
     public void setValability(int valability) {
         this.valability = valability;
     }
+
+    public boolean isBefore(String date)
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            if(sdf.parse(this.date).before(sdf.parse(date)))
+                return true;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

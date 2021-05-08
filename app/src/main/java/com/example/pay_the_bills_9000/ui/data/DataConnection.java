@@ -6,8 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,7 +13,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import model.Car;
 import model.Syn;
@@ -134,12 +136,14 @@ public class DataConnection
   public void createNewInsPolicy(String insurer, String startDate, String stopDate, String cost)
   {
       carMutableLiveData.getValue().getInsurancePolicies().add(0, new insurancePolicy(insurer, startDate + " - " + stopDate, cost));
+
       myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
   }
 
   public void createNewSyn(String synShop, boolean passed, String date, int valability)
   {
       carMutableLiveData.getValue().getSyns().add(0, new Syn(synShop, passed, date, valability));
+      carMutableLiveData.getValue().sortSyns();
       myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
   }
 
