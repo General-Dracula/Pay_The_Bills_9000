@@ -56,12 +56,13 @@ public class DataConnection
               if (!task.isSuccessful())
               {
                   Log.e("firebase", "Error getting data", task.getException());
-
+                  System.out.println("-----------------------------------NO SUCCESS");
               }
               else {
                   Log.d("firebase", String.valueOf(task.getResult()));
                   if(task.getResult().getValue() == null)
                   {
+                      System.out.println("-----------------------------------NOT FOUND");
                      myRef.child(plate).setValue(this.createEmptyCar(plate)).addOnCompleteListener(task1 -> Log.d("------firebase", "works i hope"));
                   }
 
@@ -144,6 +145,18 @@ public class DataConnection
   {
       carMutableLiveData.getValue().getSyns().add(0, new Syn(synShop, passed, date, valability));
       carMutableLiveData.getValue().sortSyns();
+      myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+  }
+
+  public void deleteSyn(Syn toBeDeleted)
+  {
+      carMutableLiveData.getValue().getSyns().remove(toBeDeleted);
+      myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+  }
+
+  public void deleteInsPolicy(insurancePolicy toBeDeleted)
+  {
+      carMutableLiveData.getValue().getInsurancePolicies().remove(toBeDeleted);
       myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
   }
 

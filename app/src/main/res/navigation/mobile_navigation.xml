@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/insurance"
         android:name="com.example.pay_the_bills_9000.ui.insurance.InsuranceFragment"
-        android:label="@string/menu_insurance"
-        tools:layout="@layout/fragment_insurance" >
+        android:label="Car Insurance"
+        tools:layout="@layout/fragment_insurance">
         <action
             android:id="@+id/addInsuranceAction"
             app:destination="@id/addInsurancePolicyFragment" />
@@ -18,8 +18,8 @@
     <fragment
         android:id="@+id/syn"
         android:name="com.example.pay_the_bills_9000.ui.Syn.SynFragment"
-        android:label="@string/menu_syn"
-        tools:layout="@layout/fragment_syn" >
+        android:label="Danish Car Inspection"
+        tools:layout="@layout/fragment_syn">
         <action
             android:id="@+id/add_syn_action"
             app:destination="@id/addSynFragment" />

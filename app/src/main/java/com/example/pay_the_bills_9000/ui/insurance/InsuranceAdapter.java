@@ -4,12 +4,14 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pay_the_bills_9000.R;
+import com.example.pay_the_bills_9000.ui.data.DataConnection;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -71,6 +73,17 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+
+        insuranceViewHolder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //syns.remove(position);
+                //notifyDataSetChanged();
+                DataConnection.getInstance().deleteInsPolicy(insurancePolicies.get(position));
+            }
+        });
     }
 
     public class InsuranceViewHolder extends RecyclerView.ViewHolder
@@ -80,6 +93,8 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
         TextView cost;
         TextView valid;
 
+        ImageButton deleteButton;
+
         InsuranceViewHolder(View itemView)
         {
             super(itemView);
@@ -87,6 +102,7 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
             this.period = itemView.findViewById(R.id.period);
             this.cost = itemView.findViewById(R.id.ammount);
             this.valid = itemView.findViewById(R.id.validText);
+            this.deleteButton = itemView.findViewById(R.id.deleteInsButton);
         }
     }
 }

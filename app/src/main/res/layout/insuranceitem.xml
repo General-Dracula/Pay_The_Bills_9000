@@ -62,8 +62,19 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toEndOf="@+id/period"
         app:layout_constraintTop_toBottomOf="@+id/ammount"
         app:layout_constraintVertical_bias="0.31" />
+
+    <ImageButton
+        android:id="@+id/deleteInsButton"
+        android:layout_width="46dp"
+        android:layout_height="38dp"
+        android:background="#101010"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toEndOf="@+id/validText"
+        app:layout_constraintTop_toBottomOf="@+id/ammount"
+        app:srcCompat="@android:drawable/ic_delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>

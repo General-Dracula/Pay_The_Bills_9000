@@ -6,6 +6,8 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,7 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pay_the_bills_9000.R;
+import com.example.pay_the_bills_9000.ui.data.DataConnection;
 import com.example.pay_the_bills_9000.ui.insurance.InsuranceAdapter;
 
 import java.text.ParseException;
@@ -51,6 +54,7 @@ public class SynAdapter extends RecyclerView.Adapter<SynAdapter.SynViewHolder>
     {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.synitem, parent, false);
+
         return new SynViewHolder(view);
     }
 
@@ -122,7 +126,19 @@ public class SynAdapter extends RecyclerView.Adapter<SynAdapter.SynViewHolder>
             synViewHolder.valability.setAlpha(0.0f);
         }
 
+        synViewHolder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //syns.remove(position);
+                //notifyDataSetChanged();
+                DataConnection.getInstance().deleteSyn(syns.get(position));
+            }
+        });
+
     }
+
+
 
 
 
@@ -134,6 +150,8 @@ public class SynAdapter extends RecyclerView.Adapter<SynAdapter.SynViewHolder>
         TextView valid;
         TextView daysLeft;
 
+        ImageButton deleteButton;
+
         SynViewHolder(View itemView)
         {
             super(itemView);
@@ -142,6 +160,7 @@ public class SynAdapter extends RecyclerView.Adapter<SynAdapter.SynViewHolder>
             this.valability = itemView.findViewById(R.id.synValability);
             this.valid = itemView.findViewById(R.id.synValidText);
             this.daysLeft = itemView.findViewById(R.id.synDaysLeft);
+            this.deleteButton = itemView.findViewById(R.id.synItemDeleteButton);
         }
     }
 }
