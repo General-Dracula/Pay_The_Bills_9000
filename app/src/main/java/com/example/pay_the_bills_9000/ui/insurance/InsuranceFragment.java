@@ -4,14 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.ListFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
@@ -21,11 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pay_the_bills_9000.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import model.Car;
-import model.insurancePolicy;
 
 public class InsuranceFragment extends Fragment {
 
@@ -52,7 +44,7 @@ public class InsuranceFragment extends Fragment {
         insPoliciesList.hasFixedSize();
         //insPoliciesList.setLayoutManager(new LinearLayoutManager(this));
 
-        FloatingActionButton fab = view.findViewById(R.id.fab);
+        FloatingActionButton fab = view.findViewById(R.id.fabAddIns);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +70,7 @@ public class InsuranceFragment extends Fragment {
     {
         @Override
         public void onChanged(Car car) {
-            InsuranceAdapter insuranceAdapter = new InsuranceAdapter(car.getInsurancePolicies());
+            insuranceAdapter = new InsuranceAdapter(car.getInsurancePolicies());
             insPoliciesList.setLayoutManager(new LinearLayoutManager(getContext()));
             insPoliciesList.setAdapter(insuranceAdapter);
         }

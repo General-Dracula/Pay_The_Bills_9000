@@ -19,7 +19,11 @@
         android:id="@+id/syn"
         android:name="com.example.pay_the_bills_9000.ui.Syn.SynFragment"
         android:label="@string/menu_syn"
-        tools:layout="@layout/fragment_syn" />
+        tools:layout="@layout/fragment_syn" >
+        <action
+            android:id="@+id/add_syn_action"
+            app:destination="@id/addSynFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/green_tax"
@@ -31,4 +35,9 @@
         android:name="com.example.pay_the_bills_9000.ui.insurance.AddInsurancePolicyFragment"
         android:label="Add Insurance Policy"
         tools:layout="@layout/add_insurance_policy_fragment" />
+    <fragment
+        android:id="@+id/addSynFragment"
+        android:name="com.example.pay_the_bills_9000.ui.Syn.AddSynFragment"
+        android:label="add_syn_fragment"
+        tools:layout="@layout/add_syn_fragment" />
 </navigation>

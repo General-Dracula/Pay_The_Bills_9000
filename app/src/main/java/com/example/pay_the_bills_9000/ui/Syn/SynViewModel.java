@@ -4,16 +4,20 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.pay_the_bills_9000.ui.data.DataConnection;
+
+import model.Car;
+
 public class SynViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+
 
     public SynViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is syn fragment");
+
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<Car> getSyns()
+    {
+        return DataConnection.getInstance().getCar();
     }
 }

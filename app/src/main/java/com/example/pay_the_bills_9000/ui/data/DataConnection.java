@@ -51,7 +51,8 @@ public class DataConnection
   {
       myRef.child(plate).get().addOnCompleteListener(task -> {
 
-              if (!task.isSuccessful()) {
+              if (!task.isSuccessful())
+              {
                   Log.e("firebase", "Error getting data", task.getException());
 
               }
@@ -59,10 +60,10 @@ public class DataConnection
                   Log.d("firebase", String.valueOf(task.getResult()));
                   if(task.getResult().getValue() == null)
                   {
-                     myRef.child(plate).setValue(this.createEmptyCar(plate)).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+                     myRef.child(plate).setValue(this.createEmptyCar(plate)).addOnCompleteListener(task1 -> Log.d("------firebase", "works i hope"));
                   }
 
-                      //this.carMutableLiveData.setValue(task.getResult().getValue(Car.class));
+                    //  this.carMutableLiveData.setValue(this.createEmptyCar(plate));
 
               }
 
@@ -90,6 +91,7 @@ public class DataConnection
   private Car createEmptyCar(String plate)
   {
       ArrayList<insurancePolicy> aux = new ArrayList<insurancePolicy>();
+
 
       ArrayList<Syn> auxSyn = new ArrayList<Syn>();
 
@@ -132,6 +134,12 @@ public class DataConnection
   public void createNewInsPolicy(String insurer, String startDate, String stopDate, String cost)
   {
       carMutableLiveData.getValue().getInsurancePolicies().add(0, new insurancePolicy(insurer, startDate + " - " + stopDate, cost));
+      myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+  }
+
+  public void createNewSyn(String synShop, boolean passed, String date, int valability)
+  {
+      carMutableLiveData.getValue().getSyns().add(0, new Syn(synShop, passed, date, valability));
       myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
   }
 
