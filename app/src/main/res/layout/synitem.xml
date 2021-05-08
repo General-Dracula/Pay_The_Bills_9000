@@ -24,8 +24,8 @@
 
     <TextView
         android:id="@+id/dateSyn"
-        android:layout_width="101dp"
-        android:layout_height="28dp"
+        android:layout_width="129dp"
+        android:layout_height="29dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="12.12.2021"
@@ -62,21 +62,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/synValidText"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.852"
         app:layout_constraintStart_toEndOf="@+id/dateSyn"
         app:layout_constraintTop_toBottomOf="@+id/synShop"
-        app:layout_constraintVertical_bias="0.432" />
+        app:layout_constraintVertical_bias="0.526" />
 
     <TextView
         android:id="@+id/synDaysLeft"
-        android:layout_width="106dp"
+        android:layout_width="100dp"
         android:layout_height="26dp"
         android:text="--- Days left"
         android:textColor="#4DB6AC"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toEndOf="@+id/synValability"
-        app:layout_constraintTop_toBottomOf="@+id/synValidText" />
+        app:layout_constraintTop_toBottomOf="@+id/synValidText"
+        app:layout_constraintVertical_bias="0.515" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

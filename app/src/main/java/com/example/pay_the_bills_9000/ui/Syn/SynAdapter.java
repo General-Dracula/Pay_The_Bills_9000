@@ -77,11 +77,11 @@ public class SynAdapter extends RecyclerView.Adapter<SynAdapter.SynViewHolder>
             e.printStackTrace();
         }
 
+        c2.add(Calendar.YEAR, syns.get(position).getValability());
+        String formattedDate2 = df.format(c2.getTime());
+
         if(syns.get(position).isPassed())
         {
-
-            c2.add(Calendar.YEAR, syns.get(position).getValability());
-
 
             try {
                 if (sdf.parse(formattedDate).before(c2.getTime())) {
@@ -92,7 +92,7 @@ public class SynAdapter extends RecyclerView.Adapter<SynAdapter.SynViewHolder>
                     synViewHolder.valid.setTextColor(Color.parseColor("#14cc45"));
 
                     Date firstDate = sdf.parse(formattedDate);
-                    Date secondDate = sdf.parse((syns.get(position).getDate()));
+                    Date secondDate = sdf.parse(formattedDate2);
 
                     assert firstDate != null;
                     assert secondDate != null;
