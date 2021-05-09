@@ -24,144 +24,127 @@ import model.Syn;
 import model.greenTax;
 import model.insurancePolicy;
 
-public class DataConnection
-{
-  private MutableLiveData<Car> carMutableLiveData;
-
+public class DataConnection {
+    private MutableLiveData<Car> carMutableLiveData;
 
 
     FirebaseDatabase database;
     DatabaseReference myRef;
 
-  private static DataConnection instance;
+    private static DataConnection instance;
 
     private static Object lock = new Object();
 
-  private DataConnection()
-  {
-      database = FirebaseDatabase.getInstance("https://pay-the-billls-9000-default-rtdb.europe-west1.firebasedatabase.app");
+    private DataConnection() {
+        database = FirebaseDatabase.getInstance("https://pay-the-billls-9000-default-rtdb.europe-west1.firebasedatabase.app");
 
-      database.setLogLevel(Logger.Level.DEBUG);
+        database.setLogLevel(Logger.Level.DEBUG);
 
-      myRef = database.getReference();
+        myRef = database.getReference();
 
-      carMutableLiveData = new MutableLiveData<Car>(createEmptyCar(""));
+        carMutableLiveData = new MutableLiveData<Car>(createEmptyCar(""));
 
-  }
+    }
 
-  private void findCar(String plate)
-  {
-      myRef.child(plate).get().addOnCompleteListener(task -> {
+    private void findCar(String plate) {
+        System.out.println("-----------------------------------69696");
+        myRef.child(plate).get().addOnCompleteListener(task -> {
 
-              if (!task.isSuccessful())
-              {
-                  Log.e("firebase", "Error getting data", task.getException());
-                  System.out.println("-----------------------------------NO SUCCESS");
-              }
-              else {
-                  Log.d("firebase", String.valueOf(task.getResult()));
-                  if(task.getResult().getValue() == null)
-                  {
-                      System.out.println("-----------------------------------NOT FOUND");
-                     myRef.child(plate).setValue(this.createEmptyCar(plate)).addOnCompleteListener(task1 -> Log.d("------firebase", "works i hope"));
-                  }
+            if (!task.isSuccessful()) {
+                Log.e("firebase", "Error getting data", task.getException());
+                System.out.println("-----------------------------------NO SUCCESS");
+            } else {
+                Log.d("firebase", String.valueOf(task.getResult()));
+                if (task.getResult().getValue() == null) {
+                    System.out.println("-----------------------------------NOT FOUND");
+                    myRef.child(plate).setValue(this.createEmptyCar(plate)).addOnCompleteListener(task1 -> Log.d("------firebase", "works i hope"));
+                }
 
-                    //  this.carMutableLiveData.setValue(this.createEmptyCar(plate));
+//                  this.carMutableLiveData.setValue(this.createEmptyCar(plate));
 
-              }
+            }
 
-      });
+        });
 
-      myRef.child(plate).addValueEventListener(new ValueEventListener() {
-          @Override
-          public void onDataChange(@NonNull DataSnapshot snapshot) {
-              carMutableLiveData.setValue(snapshot.getValue(Car.class));
-          }
+        myRef.child(plate).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.getValue(Car.class) == null)
+                    carMutableLiveData.setValue(createEmptyCar(plate));
+                else
+                    carMutableLiveData.setValue(snapshot.getValue(Car.class));
+            }
 
-          @Override
-          public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-          }
-      });
-  }
-
+            }
+        });
+    }
 
 
+    private Car createEmptyCar(String plate) {
+        ArrayList<insurancePolicy> aux = new ArrayList<insurancePolicy>();
 
 
+        ArrayList<Syn> auxSyn = new ArrayList<Syn>();
 
 
-  private Car createEmptyCar(String plate)
-  {
-      ArrayList<insurancePolicy> aux = new ArrayList<insurancePolicy>();
+        ArrayList<greenTax> auxTax = new ArrayList<greenTax>();
 
 
-      ArrayList<Syn> auxSyn = new ArrayList<Syn>();
+        return new Car(plate, aux, auxSyn, auxTax);
+    }
 
+    public static DataConnection getInstance() {
+        if (instance == null) {
+            synchronized (lock) {
+                if (instance == null) {
+                    instance = new DataConnection();
+                }
+            }
+        }
+        return instance;
+    }
 
-      ArrayList<greenTax> auxTax = new ArrayList<greenTax>();
+    public void login(String licencePlate) {
 
+        findCar(licencePlate);
 
-      return new Car(plate, aux, auxSyn, auxTax);
-  }
+        //this.carMutableLiveData.getValue().setLicencePlate(licencePlate);
+    }
 
-  public static DataConnection getInstance() {
-      if (instance == null) {
-          synchronized (lock) {
-              if (instance == null) {
-                  instance = new DataConnection();
-              }
-          }
-      }
-      return instance;
-  }
+    public String getLicencePlate() {
+        return this.carMutableLiveData.getValue().getLicencePlate();
+    }
 
-  public void login(String licencePlate)
-  {
+    public LiveData<Car> getCar() {
+        return this.carMutableLiveData;
+    }
 
-      findCar(licencePlate);
+    public void createNewInsPolicy(String insurer, String startDate, String stopDate, String cost) {
+        carMutableLiveData.getValue().getInsurancePolicies().add(0, new insurancePolicy(insurer, startDate + " - " + stopDate, cost));
 
-      //this.carMutableLiveData.getValue().setLicencePlate(licencePlate);
-  }
+        myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+    }
 
-  public String getLicencePlate()
-  {
-      return this.carMutableLiveData.getValue().getLicencePlate();
-  }
+    public void createNewSyn(String synShop, boolean passed, String date, int valability) {
+        carMutableLiveData.getValue().getSyns().add(0, new Syn(synShop, passed, date, valability));
+        carMutableLiveData.getValue().sortSyns();
+        myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+    }
 
-  public LiveData<Car> getCar()
-  {
-      return this.carMutableLiveData;
-  }
+    public void deleteSyn(Syn toBeDeleted) {
+        carMutableLiveData.getValue().getSyns().remove(toBeDeleted);
+        myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+    }
 
-  public void createNewInsPolicy(String insurer, String startDate, String stopDate, String cost)
-  {
-      carMutableLiveData.getValue().getInsurancePolicies().add(0, new insurancePolicy(insurer, startDate + " - " + stopDate, cost));
+    public void deleteInsPolicy(insurancePolicy toBeDeleted) {
+        carMutableLiveData.getValue().getInsurancePolicies().remove(toBeDeleted);
+        myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+    }
 
-      myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
-  }
-
-  public void createNewSyn(String synShop, boolean passed, String date, int valability)
-  {
-      carMutableLiveData.getValue().getSyns().add(0, new Syn(synShop, passed, date, valability));
-      carMutableLiveData.getValue().sortSyns();
-      myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
-  }
-
-  public void deleteSyn(Syn toBeDeleted)
-  {
-      carMutableLiveData.getValue().getSyns().remove(toBeDeleted);
-      myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
-  }
-
-  public void deleteInsPolicy(insurancePolicy toBeDeleted)
-  {
-      carMutableLiveData.getValue().getInsurancePolicies().remove(toBeDeleted);
-      myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
-  }
-
-    private Car testingCar()
-    {
+    private Car testingCar() {
         ArrayList<insurancePolicy> aux = new ArrayList<insurancePolicy>();
         aux.add(new insurancePolicy("Gigel Frone SRL", "12/01/2020 - 12/01/2021", "1234 DKK"));
         aux.add(new insurancePolicy("Gigel  SRL", "12/01/2020 - 12/01/2021", "32524 DKK"));
@@ -183,7 +166,6 @@ public class DataConnection
 
         return new Car(carMutableLiveData.getValue().getLicencePlate(), aux, auxSyn, auxTax);
     }
-
 
 
 }
