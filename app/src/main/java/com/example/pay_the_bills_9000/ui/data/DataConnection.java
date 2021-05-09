@@ -13,11 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 import model.Car;
 import model.Syn;
@@ -61,7 +57,6 @@ public class DataConnection {
                 }
 
 //                  this.carMutableLiveData.setValue(this.createEmptyCar(plate));
-
             }
 
         });
@@ -134,6 +129,13 @@ public class DataConnection {
         myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
     }
 
+    public void createNewGreenTax(String date, String cost, int valability) {
+        carMutableLiveData.getValue().getGreenTaxes().add(0, new greenTax(cost, date, valability));
+        carMutableLiveData.getValue().sortGreenTaxes();
+        myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+    }
+
+
     public void deleteSyn(Syn toBeDeleted) {
         carMutableLiveData.getValue().getSyns().remove(toBeDeleted);
         myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
@@ -141,6 +143,11 @@ public class DataConnection {
 
     public void deleteInsPolicy(insurancePolicy toBeDeleted) {
         carMutableLiveData.getValue().getInsurancePolicies().remove(toBeDeleted);
+        myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
+    }
+
+    public void deleteGreenTax(greenTax toBeDeleted) {
+        carMutableLiveData.getValue().getGreenTaxes().remove(toBeDeleted);
         myRef.child(this.carMutableLiveData.getValue().getLicencePlate()).setValue(this.carMutableLiveData.getValue()).addOnCompleteListener(task1 -> Log.d("firebase", "MERE"));
     }
 
@@ -159,10 +166,10 @@ public class DataConnection {
         auxSyn.add(new Syn("Gigel SRL", true, "12.12.2020", 2));
 
         ArrayList<greenTax> auxTax = new ArrayList<greenTax>();
-        auxTax.add(new greenTax("2432", "12.12.2000"));
-        auxTax.add(new greenTax("2432", "12.12.2000"));
-        auxTax.add(new greenTax("2432", "12.12.2000"));
-        auxTax.add(new greenTax("2432", "12.12.2000"));
+        auxTax.add(new greenTax("2432", "12.12.2000", 1));
+        auxTax.add(new greenTax("2432", "12.12.2000", 1));
+        auxTax.add(new greenTax("2432", "12.12.2000", 1));
+        auxTax.add(new greenTax("2432", "12.12.2000", 1));
 
         return new Car(carMutableLiveData.getValue().getLicencePlate(), aux, auxSyn, auxTax);
     }

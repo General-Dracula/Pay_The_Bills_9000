@@ -34,4 +34,9 @@
     <string name="syn_period">SYN PERIOD</string>
     <string name="passed">Passed</string>
     <string name="error">Error</string>
+    <string name="cost">Cost</string>
+    <string name="valability">Valability</string>
+    <string name="select_tax_date">SELECT TAX DATE</string>
+    <string name="months">Months</string>
+    <string name="add_green_tax">Add Green Tax</string>
 </resources>

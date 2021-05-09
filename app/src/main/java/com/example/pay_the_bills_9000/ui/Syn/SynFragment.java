@@ -43,7 +43,6 @@ public class SynFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_syn, container, false);
 
         synList = view.findViewById(R.id.rvSyn);
-        System.out.println("----------------" + synList);
         synList.hasFixedSize();
 
         FloatingActionButton fab = view.findViewById(R.id.fabAddSyn);

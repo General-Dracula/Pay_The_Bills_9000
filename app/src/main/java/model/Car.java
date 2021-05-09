@@ -34,6 +34,7 @@ public class Car
     public void sortArrays()
     {
         sortSyns();
+        sortGreenTaxes();
     }
 
     public void sortSyns()
@@ -48,7 +49,20 @@ public class Car
                 }
             }
         }
+    }
 
+    public void sortGreenTaxes()
+    {
+        for(int i = 0; i < this.greenTaxes.size(); i++)
+        {
+            for(int j = i + 1; j < this.greenTaxes.size(); j++)
+            {
+                if(this.greenTaxes.get(i).isBefore(this.greenTaxes.get(j).getDate()))
+                {
+                    Collections.swap(this.greenTaxes, i, j);
+                }
+            }
+        }
     }
 
 
