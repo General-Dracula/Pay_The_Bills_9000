@@ -120,6 +120,7 @@ public class AddGreenTaxFragment extends Fragment {
             public void onClick(View v) {
                 if (mViewModel.createNewGreenTax(taxCost.getText().toString()))
                 {
+                    mViewModel.setCurrency(currencySpinner.toString());
                     goBack();
                 }
             }

@@ -26,7 +26,7 @@ public class AddGreenTaxViewModel extends ViewModel
     public AddGreenTaxViewModel()
     {
         addTaxError = new MutableLiveData<>("");
-        currency = "";
+        currency = "DKK";
         date = "";
     }
 

@@ -48,7 +48,7 @@ public class GreenTaxAdapter extends RecyclerView.Adapter<GreenTaxAdapter.GreenT
     {
 
         holder.date.setText(taxes.get(position).getDate());
-        holder.cost.setText(taxes.get(position).getDate());
+        holder.cost.setText(taxes.get(position).getAmmount());
         if(taxes.get(position).getValability() == 1)
             holder.valability.setText(taxes.get(position).getValability() + " Month");
         else
